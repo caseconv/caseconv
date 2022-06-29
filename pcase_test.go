@@ -580,6 +580,5 @@ func testline() string {
 	if ok {
 		return fmt.Sprintf("%s:%d", filepath.Base(file), line)
 	}
-
-	return "It was not possible to recover file and line number information about function invocations!"
+	return "it was not possible to recover file and line number information about function invocations"
 }
