@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package idfmt_test
+package pcase_test
 
 import (
 	"fmt"
@@ -10,7 +10,7 @@ import (
 	"runtime"
 	"testing"
 
-	"github.com/danil/idfmt"
+	"github.com/gorelib/pcase"
 )
 
 func TestNew(t *testing.T) {
@@ -89,7 +89,7 @@ func TestNew(t *testing.T) {
 		t.Run(tt.line+"/"+tt.name, func(t *testing.T) {
 			t.Parallel()
 
-			get := idfmt.New(tt.input)
+			get := pcase.New(tt.input)
 			ok := len(get) == len(tt.fromText)
 			if ok {
 				for i := 0; i < len(get); i++ {
@@ -103,7 +103,7 @@ func TestNew(t *testing.T) {
 				t.Errorf("\nwant text: %s\n get text: %s\ntest: %s", tt.fromText, get, tt.line)
 			}
 
-			get = idfmt.New(tt.input, idfmt.FromCamel())
+			get = pcase.New(tt.input, pcase.FromCamel())
 			ok = len(get) == len(tt.fromCamel)
 			if ok {
 				for i := 0; i < len(get); i++ {
@@ -196,12 +196,12 @@ func TestNewText(t *testing.T) {
 		t.Run(tt.line+"/"+tt.name, func(t *testing.T) {
 			t.Parallel()
 
-			get := idfmt.Text(tt.input)
+			get := pcase.Text(tt.input)
 			if get != tt.fromText {
 				t.Errorf("\nwant text: %s\n get text: %s\n     test: %s", tt.fromText, get, tt.line)
 			}
 
-			get = idfmt.Text(tt.input, idfmt.FromCamel())
+			get = pcase.Text(tt.input, pcase.FromCamel())
 			if get != tt.fromCamel {
 				t.Errorf("\nwant camel: %s\n get camel: %s\n      test: %s", tt.fromCamel, get, tt.line)
 			}
@@ -285,12 +285,12 @@ func TestNewCamel(t *testing.T) {
 		t.Run(tt.line+"/"+tt.name, func(t *testing.T) {
 			t.Parallel()
 
-			get := idfmt.Camel(tt.input)
+			get := pcase.Camel(tt.input)
 			if get != tt.fromText {
 				t.Errorf("\nwant text: %s\n get text: %s\n     test: %s", tt.fromText, get, tt.line)
 			}
 
-			get = idfmt.Camel(tt.input, idfmt.FromCamel())
+			get = pcase.Camel(tt.input, pcase.FromCamel())
 			if get != tt.fromCamel {
 				t.Errorf("\nwant camel: %s\n get camel: %s\n      test: %s", tt.fromCamel, get, tt.line)
 			}
@@ -323,7 +323,7 @@ func TestCamel(t *testing.T) {
 		t.Run(tt.line+"/"+tt.name, func(t *testing.T) {
 			t.Parallel()
 
-			get := idfmt.ID(tt.input).Camel()
+			get := pcase.Txt(tt.input).Camel()
 			if get != tt.want {
 				t.Errorf("\nwant: %s\nget:  %s\ntest: %s", tt.want, get, tt.line)
 			}
@@ -407,12 +407,12 @@ func TestNewSnake(t *testing.T) {
 		t.Run(tt.line+"/"+tt.name, func(t *testing.T) {
 			t.Parallel()
 
-			get := idfmt.Snake(tt.input)
+			get := pcase.Snake(tt.input)
 			if get != tt.fromText {
 				t.Errorf("\nwant text: %s\n get text: %s\n     test: %s", tt.fromText, get, tt.line)
 			}
 
-			get = idfmt.Snake(tt.input, idfmt.FromCamel())
+			get = pcase.Snake(tt.input, pcase.FromCamel())
 			if get != tt.fromCamel {
 				t.Errorf("\nwant camel: %s\n get camel: %s\n      test: %s", tt.fromCamel, get, tt.line)
 			}
@@ -445,7 +445,7 @@ func TestSnake(t *testing.T) {
 		t.Run(tt.line+"/"+tt.name, func(t *testing.T) {
 			t.Parallel()
 
-			get := idfmt.ID(tt.input).Snake()
+			get := pcase.Txt(tt.input).Snake()
 			if get != tt.want {
 				t.Errorf("\nwant: %s\nget:  %s\ntest: %s", tt.want, get, tt.line)
 			}
@@ -529,12 +529,12 @@ func TestNewKebab(t *testing.T) {
 		t.Run(tt.line, func(t *testing.T) {
 			t.Parallel()
 
-			get := idfmt.Kebab(tt.input)
+			get := pcase.Kebab(tt.input)
 			if get != tt.fromText {
 				t.Errorf("\nwant text: %s\n get text: %s\n     test: %s", tt.fromText, get, tt.line)
 			}
 
-			get = idfmt.Kebab(tt.input, idfmt.FromCamel())
+			get = pcase.Kebab(tt.input, pcase.FromCamel())
 			if get != tt.fromCamel {
 				t.Errorf("\nwant camel: %s\n get camel: %s\n      test: %s", tt.fromCamel, get, tt.line)
 			}
@@ -567,7 +567,7 @@ func TestKebab(t *testing.T) {
 		t.Run(tt.line, func(t *testing.T) {
 			t.Parallel()
 
-			get := idfmt.ID(tt.input).Kebab()
+			get := pcase.Txt(tt.input).Kebab()
 			if get != tt.want {
 				t.Errorf("\nwant: %s\nget:  %s\ntest: %s", tt.want, get, tt.line)
 			}

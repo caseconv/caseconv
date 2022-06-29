@@ -1,7 +1,7 @@
-# idfmt
+# pcase
 
-[![Build Status](https://cloud.drone.io/api/badges/danil/idfmt/status.svg)](https://cloud.drone.io/danil/idfmt)
-[![Go Reference](https://pkg.go.dev/badge/github.com/danil/idfmt.svg)](https://pkg.go.dev/github.com/danil/idfmt)
+[![Build Status](https://cloud.drone.io/api/badges/gorelib/pcase/status.svg)](https://cloud.drone.io/gorelib/pcase)
+[![Go Reference](https://pkg.go.dev/badge/github.com/gorelib/pcase.svg)](https://pkg.go.dev/github.com/gorelib/pcase)
 
 Source files are distributed under the BSD-style license.
 
