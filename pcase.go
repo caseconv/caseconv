@@ -12,8 +12,7 @@ import (
 )
 
 // Txt represents phrase consisting of words, that can be represented as
-// a space-separated text, as a text from words in Camel case, Snake case or
-// Kebab case.
+// a space-separated text, as a text in Camel case, Snake case or Kebab case.
 type Txt []string
 
 // New splits a phrase into words.
@@ -64,12 +63,12 @@ func (txt Txt) Text() string {
 	return s
 }
 
-// Camel returns all words concatenated together by camel case.
+// Camel returns all words concatenated together through camel case.
 func Camel(text string, opts ...Option) string {
 	return Txt(New(text, opts...)).Camel()
 }
 
-// Camel returns all words concatenated together by camel case.
+// Camel returns all words concatenated together through camel case.
 func (txt Txt) Camel() string {
 	a := txt.clone()
 	for i := 0; i < len(a); i++ {
@@ -85,12 +84,12 @@ func (txt Txt) Camel() string {
 	return s
 }
 
-// Snake returns all words concatenated together by underscores.
+// Snake returns all words concatenated together through underscores.
 func Snake(text string, opts ...Option) string {
 	return Txt(New(text, opts...)).Snake()
 }
 
-// Snake returns all words concatenated together by underscores.
+// Snake returns all words concatenated together through underscores.
 func (txt Txt) Snake() string {
 	a := txt.compact()
 	s := strings.Join(a, "_")
@@ -98,12 +97,12 @@ func (txt Txt) Snake() string {
 	return s
 }
 
-// Kebab returns all words concatenated together by hyphens.
+// Kebab returns all words concatenated together through hyphens.
 func Kebab(text string, opts ...Option) string {
 	return Txt(New(text, opts...)).Kebab()
 }
 
-// Kebab returns all words concatenated together by hyphens.
+// Kebab returns all words concatenated together through hyphens.
 func (txt Txt) Kebab() string {
 	a := txt.compact()
 	s := strings.Join(a, "-")
