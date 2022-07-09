@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package pcase_test
+package casefmt_test
 
 import (
 	"fmt"
@@ -10,7 +10,7 @@ import (
 	"runtime"
 	"testing"
 
-	"github.com/pfmt/pcase"
+	"github.com/pfmt/casefmt"
 )
 
 var newTests = []struct {
@@ -95,7 +95,7 @@ func TestNew(t *testing.T) {
 		t.Run(tt.line+"/"+tt.name, func(t *testing.T) {
 			t.Parallel()
 
-			get := pcase.New(tt.input)
+			get := casefmt.New(tt.input)
 			ok := len(get) == len(tt.fromText)
 			if ok {
 				for i := 0; i < len(get); i++ {
@@ -109,7 +109,7 @@ func TestNew(t *testing.T) {
 				t.Errorf("\nwant text: %s\n get text: %s\ntest: %s", tt.fromText, get, tt.line)
 			}
 
-			get = pcase.New(tt.input, pcase.FromCamel())
+			get = casefmt.New(tt.input, casefmt.FromCamel())
 			ok = len(get) == len(tt.fromCamel)
 			if ok {
 				for i := 0; i < len(get); i++ {
@@ -136,7 +136,7 @@ func BenchmarkNew(b *testing.B) {
 
 		b.Run(tt.line+"/"+tt.name, func(b *testing.B) {
 			for i := 0; i < b.N; i++ {
-				_ = pcase.New(tt.input)
+				_ = casefmt.New(tt.input)
 			}
 		})
 	}
@@ -152,7 +152,7 @@ func BenchmarkNewFromCamel(b *testing.B) {
 
 		b.Run(tt.line+"/"+tt.name, func(b *testing.B) {
 			for i := 0; i < b.N; i++ {
-				_ = pcase.New(tt.input, pcase.FromCamel())
+				_ = casefmt.New(tt.input, casefmt.FromCamel())
 			}
 		})
 	}
@@ -239,12 +239,12 @@ func TestNewText(t *testing.T) {
 		t.Run(tt.line+"/"+tt.name, func(t *testing.T) {
 			t.Parallel()
 
-			get := pcase.Text(tt.input)
+			get := casefmt.Text(tt.input)
 			if get != tt.fromText {
 				t.Errorf("\nwant text: %s\n get text: %s\n     test: %s", tt.fromText, get, tt.line)
 			}
 
-			get = pcase.Text(tt.input, pcase.FromCamel())
+			get = casefmt.Text(tt.input, casefmt.FromCamel())
 			if get != tt.fromCamel {
 				t.Errorf("\nwant camel: %s\n get camel: %s\n      test: %s", tt.fromCamel, get, tt.line)
 			}
@@ -262,7 +262,7 @@ func BenchmarkNewText(b *testing.B) {
 
 		b.Run(tt.line+"/"+tt.name, func(b *testing.B) {
 			for i := 0; i < b.N; i++ {
-				_ = pcase.Text(tt.input)
+				_ = casefmt.Text(tt.input)
 			}
 		})
 	}
@@ -278,7 +278,7 @@ func BenchmarkNewTextFromCamel(b *testing.B) {
 
 		b.Run(tt.line+"/"+tt.name, func(b *testing.B) {
 			for i := 0; i < b.N; i++ {
-				_ = pcase.Text(tt.input, pcase.FromCamel())
+				_ = casefmt.Text(tt.input, casefmt.FromCamel())
 			}
 		})
 	}
@@ -365,12 +365,12 @@ func TestNewCamel(t *testing.T) {
 		t.Run(tt.line+"/"+tt.name, func(t *testing.T) {
 			t.Parallel()
 
-			get := pcase.Camel(tt.input)
+			get := casefmt.Camel(tt.input)
 			if get != tt.fromText {
 				t.Errorf("\nwant text: %s\n get text: %s\n     test: %s", tt.fromText, get, tt.line)
 			}
 
-			get = pcase.Camel(tt.input, pcase.FromCamel())
+			get = casefmt.Camel(tt.input, casefmt.FromCamel())
 			if get != tt.fromCamel {
 				t.Errorf("\nwant camel: %s\n get camel: %s\n      test: %s", tt.fromCamel, get, tt.line)
 			}
@@ -388,7 +388,7 @@ func BenchmarkNewCamel(b *testing.B) {
 
 		b.Run(tt.line+"/"+tt.name, func(b *testing.B) {
 			for i := 0; i < b.N; i++ {
-				_ = pcase.Camel(tt.input)
+				_ = casefmt.Camel(tt.input)
 			}
 		})
 	}
@@ -404,7 +404,7 @@ func BenchmarkNewCamelFromCamel(b *testing.B) {
 
 		b.Run(tt.line+"/"+tt.name, func(b *testing.B) {
 			for i := 0; i < b.N; i++ {
-				_ = pcase.Camel(tt.input, pcase.FromCamel())
+				_ = casefmt.Camel(tt.input, casefmt.FromCamel())
 			}
 		})
 	}
@@ -437,7 +437,7 @@ func TestCamel(t *testing.T) {
 		t.Run(tt.line+"/"+tt.name, func(t *testing.T) {
 			t.Parallel()
 
-			get := pcase.Txt(tt.input).Camel()
+			get := casefmt.Txt(tt.input).Camel()
 			if get != tt.want {
 				t.Errorf("\nwant: %s\nget:  %s\ntest: %s", tt.want, get, tt.line)
 			}
@@ -455,7 +455,7 @@ func BenchmarkCamel(b *testing.B) {
 
 		b.Run(tt.line+"/"+tt.name, func(b *testing.B) {
 			for i := 0; i < b.N; i++ {
-				_ = pcase.Txt(tt.input).Camel()
+				_ = casefmt.Txt(tt.input).Camel()
 			}
 		})
 	}
@@ -542,12 +542,12 @@ func TestNewSnake(t *testing.T) {
 		t.Run(tt.line+"/"+tt.name, func(t *testing.T) {
 			t.Parallel()
 
-			get := pcase.Snake(tt.input)
+			get := casefmt.Snake(tt.input)
 			if get != tt.fromText {
 				t.Errorf("\nwant text: %s\n get text: %s\n     test: %s", tt.fromText, get, tt.line)
 			}
 
-			get = pcase.Snake(tt.input, pcase.FromCamel())
+			get = casefmt.Snake(tt.input, casefmt.FromCamel())
 			if get != tt.fromCamel {
 				t.Errorf("\nwant camel: %s\n get camel: %s\n      test: %s", tt.fromCamel, get, tt.line)
 			}
@@ -565,7 +565,7 @@ func BenchmarkNewSnake(b *testing.B) {
 
 		b.Run(tt.line+"/"+tt.name, func(b *testing.B) {
 			for i := 0; i < b.N; i++ {
-				_ = pcase.Snake(tt.input)
+				_ = casefmt.Snake(tt.input)
 			}
 		})
 	}
@@ -581,7 +581,7 @@ func BenchmarkNewSnakeFromCamel(b *testing.B) {
 
 		b.Run(tt.line+"/"+tt.name, func(b *testing.B) {
 			for i := 0; i < b.N; i++ {
-				_ = pcase.Snake(tt.input, pcase.FromCamel())
+				_ = casefmt.Snake(tt.input, casefmt.FromCamel())
 			}
 		})
 	}
@@ -614,7 +614,7 @@ func TestSnake(t *testing.T) {
 		t.Run(tt.line+"/"+tt.name, func(t *testing.T) {
 			t.Parallel()
 
-			get := pcase.Txt(tt.input).Snake()
+			get := casefmt.Txt(tt.input).Snake()
 			if get != tt.want {
 				t.Errorf("\nwant: %s\nget:  %s\ntest: %s", tt.want, get, tt.line)
 			}
@@ -632,7 +632,7 @@ func BenchmarkSnake(b *testing.B) {
 
 		b.Run(tt.line+"/"+tt.name, func(b *testing.B) {
 			for i := 0; i < b.N; i++ {
-				_ = pcase.Txt(tt.input).Snake()
+				_ = casefmt.Txt(tt.input).Snake()
 			}
 		})
 	}
@@ -719,12 +719,12 @@ func TestNewKebab(t *testing.T) {
 		t.Run(tt.line, func(t *testing.T) {
 			t.Parallel()
 
-			get := pcase.Kebab(tt.input)
+			get := casefmt.Kebab(tt.input)
 			if get != tt.fromText {
 				t.Errorf("\nwant text: %s\n get text: %s\n     test: %s", tt.fromText, get, tt.line)
 			}
 
-			get = pcase.Kebab(tt.input, pcase.FromCamel())
+			get = casefmt.Kebab(tt.input, casefmt.FromCamel())
 			if get != tt.fromCamel {
 				t.Errorf("\nwant camel: %s\n get camel: %s\n      test: %s", tt.fromCamel, get, tt.line)
 			}
@@ -742,7 +742,7 @@ func BenchmarkNewKebab(b *testing.B) {
 
 		b.Run(tt.line, func(b *testing.B) {
 			for i := 0; i < b.N; i++ {
-				_ = pcase.Kebab(tt.input)
+				_ = casefmt.Kebab(tt.input)
 			}
 		})
 	}
@@ -775,7 +775,7 @@ func TestKebab(t *testing.T) {
 		t.Run(tt.line, func(t *testing.T) {
 			t.Parallel()
 
-			get := pcase.Txt(tt.input).Kebab()
+			get := casefmt.Txt(tt.input).Kebab()
 			if get != tt.want {
 				t.Errorf("\nwant: %s\nget:  %s\ntest: %s", tt.want, get, tt.line)
 			}
@@ -793,7 +793,7 @@ func BenchmarkKebab(b *testing.B) {
 
 		b.Run(tt.line, func(b *testing.B) {
 			for i := 0; i < b.N; i++ {
-				_ = pcase.Txt(tt.input).Kebab()
+				_ = casefmt.Txt(tt.input).Kebab()
 			}
 		})
 	}
