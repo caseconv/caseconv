@@ -60,3 +60,7 @@ BenchmarkKebab/casefmt_test.go:765-8                                            
 PASS
 ok      github.com/pfmt/casefmt    56.880s
 ```
+
+## TODO
+
+* Add fmt.Formatter
