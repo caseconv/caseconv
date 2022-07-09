@@ -95,32 +95,32 @@ func TestNew(t *testing.T) {
 		t.Run(tt.line+"/"+tt.name, func(t *testing.T) {
 			t.Parallel()
 
-			get := casefmt.New(tt.input)
-			ok := len(get) == len(tt.fromText)
+			got := casefmt.New(tt.input)
+			ok := len(got) == len(tt.fromText)
 			if ok {
-				for i := 0; i < len(get); i++ {
-					if get[i] != tt.fromText[i] {
+				for i := 0; i < len(got); i++ {
+					if got[i] != tt.fromText[i] {
 						ok = false
 						break
 					}
 				}
 			}
 			if !ok {
-				t.Errorf("\nwant text: %s\n get text: %s\ntest: %s", tt.fromText, get, tt.line)
+				t.Errorf("\nwant text: %s\n got text: %s\ntest: %s", tt.fromText, got, tt.line)
 			}
 
-			get = casefmt.New(tt.input, casefmt.FromCamel())
-			ok = len(get) == len(tt.fromCamel)
+			got = casefmt.New(tt.input, casefmt.FromCamel())
+			ok = len(got) == len(tt.fromCamel)
 			if ok {
-				for i := 0; i < len(get); i++ {
-					if get[i] != tt.fromCamel[i] {
+				for i := 0; i < len(got); i++ {
+					if got[i] != tt.fromCamel[i] {
 						ok = false
 						break
 					}
 				}
 			}
 			if !ok {
-				t.Errorf("\nwant camel: %s\n get camel: %s\n      test: %s", tt.fromCamel, get, tt.line)
+				t.Errorf("\nwant camel: %s\n got camel: %s\n      test: %s", tt.fromCamel, got, tt.line)
 			}
 		})
 	}
@@ -239,14 +239,14 @@ func TestNewText(t *testing.T) {
 		t.Run(tt.line+"/"+tt.name, func(t *testing.T) {
 			t.Parallel()
 
-			get := casefmt.Text(tt.input)
-			if get != tt.fromText {
-				t.Errorf("\nwant text: %s\n get text: %s\n     test: %s", tt.fromText, get, tt.line)
+			got := casefmt.Text(tt.input)
+			if got != tt.fromText {
+				t.Errorf("\nwant text: %s\n got text: %s\n     test: %s", tt.fromText, got, tt.line)
 			}
 
-			get = casefmt.Text(tt.input, casefmt.FromCamel())
-			if get != tt.fromCamel {
-				t.Errorf("\nwant camel: %s\n get camel: %s\n      test: %s", tt.fromCamel, get, tt.line)
+			got = casefmt.Text(tt.input, casefmt.FromCamel())
+			if got != tt.fromCamel {
+				t.Errorf("\nwant camel: %s\n got camel: %s\n      test: %s", tt.fromCamel, got, tt.line)
 			}
 		})
 	}
@@ -365,14 +365,14 @@ func TestNewCamel(t *testing.T) {
 		t.Run(tt.line+"/"+tt.name, func(t *testing.T) {
 			t.Parallel()
 
-			get := casefmt.Camel(tt.input)
-			if get != tt.fromText {
-				t.Errorf("\nwant text: %s\n get text: %s\n     test: %s", tt.fromText, get, tt.line)
+			got := casefmt.Camel(tt.input)
+			if got != tt.fromText {
+				t.Errorf("\nwant text: %s\n got text: %s\n     test: %s", tt.fromText, got, tt.line)
 			}
 
-			get = casefmt.Camel(tt.input, casefmt.FromCamel())
-			if get != tt.fromCamel {
-				t.Errorf("\nwant camel: %s\n get camel: %s\n      test: %s", tt.fromCamel, get, tt.line)
+			got = casefmt.Camel(tt.input, casefmt.FromCamel())
+			if got != tt.fromCamel {
+				t.Errorf("\nwant camel: %s\n got camel: %s\n      test: %s", tt.fromCamel, got, tt.line)
 			}
 		})
 	}
@@ -437,9 +437,9 @@ func TestCamel(t *testing.T) {
 		t.Run(tt.line+"/"+tt.name, func(t *testing.T) {
 			t.Parallel()
 
-			get := casefmt.Txt(tt.input).Camel()
-			if get != tt.want {
-				t.Errorf("\nwant: %s\nget:  %s\ntest: %s", tt.want, get, tt.line)
+			got := casefmt.Txt(tt.input).Camel()
+			if got != tt.want {
+				t.Errorf("\nwant: %s\nget:  %s\ntest: %s", tt.want, got, tt.line)
 			}
 		})
 	}
@@ -542,14 +542,14 @@ func TestNewSnake(t *testing.T) {
 		t.Run(tt.line+"/"+tt.name, func(t *testing.T) {
 			t.Parallel()
 
-			get := casefmt.Snake(tt.input)
-			if get != tt.fromText {
-				t.Errorf("\nwant text: %s\n get text: %s\n     test: %s", tt.fromText, get, tt.line)
+			got := casefmt.Snake(tt.input)
+			if got != tt.fromText {
+				t.Errorf("\nwant text: %s\n got text: %s\n     test: %s", tt.fromText, got, tt.line)
 			}
 
-			get = casefmt.Snake(tt.input, casefmt.FromCamel())
-			if get != tt.fromCamel {
-				t.Errorf("\nwant camel: %s\n get camel: %s\n      test: %s", tt.fromCamel, get, tt.line)
+			got = casefmt.Snake(tt.input, casefmt.FromCamel())
+			if got != tt.fromCamel {
+				t.Errorf("\nwant camel: %s\n got camel: %s\n      test: %s", tt.fromCamel, got, tt.line)
 			}
 		})
 	}
@@ -614,9 +614,9 @@ func TestSnake(t *testing.T) {
 		t.Run(tt.line+"/"+tt.name, func(t *testing.T) {
 			t.Parallel()
 
-			get := casefmt.Txt(tt.input).Snake()
-			if get != tt.want {
-				t.Errorf("\nwant: %s\nget:  %s\ntest: %s", tt.want, get, tt.line)
+			got := casefmt.Txt(tt.input).Snake()
+			if got != tt.want {
+				t.Errorf("\nwant: %s\nget:  %s\ntest: %s", tt.want, got, tt.line)
 			}
 		})
 	}
@@ -719,14 +719,14 @@ func TestNewKebab(t *testing.T) {
 		t.Run(tt.line, func(t *testing.T) {
 			t.Parallel()
 
-			get := casefmt.Kebab(tt.input)
-			if get != tt.fromText {
-				t.Errorf("\nwant text: %s\n get text: %s\n     test: %s", tt.fromText, get, tt.line)
+			got := casefmt.Kebab(tt.input)
+			if got != tt.fromText {
+				t.Errorf("\nwant text: %s\n got text: %s\n     test: %s", tt.fromText, got, tt.line)
 			}
 
-			get = casefmt.Kebab(tt.input, casefmt.FromCamel())
-			if get != tt.fromCamel {
-				t.Errorf("\nwant camel: %s\n get camel: %s\n      test: %s", tt.fromCamel, get, tt.line)
+			got = casefmt.Kebab(tt.input, casefmt.FromCamel())
+			if got != tt.fromCamel {
+				t.Errorf("\nwant camel: %s\n got camel: %s\n      test: %s", tt.fromCamel, got, tt.line)
 			}
 		})
 	}
@@ -775,9 +775,9 @@ func TestKebab(t *testing.T) {
 		t.Run(tt.line, func(t *testing.T) {
 			t.Parallel()
 
-			get := casefmt.Txt(tt.input).Kebab()
-			if get != tt.want {
-				t.Errorf("\nwant: %s\nget:  %s\ntest: %s", tt.want, get, tt.line)
+			got := casefmt.Txt(tt.input).Kebab()
+			if got != tt.want {
+				t.Errorf("\nwant: %s\nget:  %s\ntest: %s", tt.want, got, tt.line)
 			}
 		})
 	}
