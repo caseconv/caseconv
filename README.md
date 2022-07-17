@@ -3,7 +3,7 @@
 [![Build Status](https://cloud.drone.io/api/badges/pfmt/caseconv/status.svg)](https://cloud.drone.io/pfmt/caseconv)
 [![Go Reference](https://pkg.go.dev/badge/github.com/pfmt/caseconv.svg)](https://pkg.go.dev/github.com/pfmt/caseconv)
 
-Case conversions for Go.  
+Case converter for Go.  
 Source files are distributed under the BSD-style license.
 
 ## About
